@@ -289,7 +289,7 @@ def gconnect():
 
     # Try Create a credentials object
     try:
-        flow = flow_from_clientsecrets('client_secrets.json', scope='')
+        flow = flow_from_clientsecrets(path + '/client_secrets.json', scope='')
         flow.redirect_uri = 'postmessage'
         credentials = flow.step2_exchange(code)
 
@@ -420,4 +420,4 @@ if __name__ == '__main__':
     TEMPLATES_AUTO_RELOAD = True
     app.secret_key = 'secret_key'
     app.debug = True
-    app.run(host='0.0.0.0', port=80)
+    app.run(host='localhost', port=8000)
