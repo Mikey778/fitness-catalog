@@ -18,7 +18,7 @@ CLIENT_ID = json.loads(
 APPLICATION_NAME = "Fitness Catalog"
 
 # Connect to Database
-engine = create_engine('sqlite:///fitness.db')
+engine = create_engine('postgresql://pguser:Gr4d3rP4$$!@localhost/fitness');
 Base.metadata.bind = engine
 # Create Session
 DBSession = sessionmaker(bind=engine)
