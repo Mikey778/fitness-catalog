@@ -1,0 +1,20 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+	<div class="row" style="text-align:center;">
+		<div class="col-md-11 col-md-offset-1">
+			<h2 id="mg-title">New Muscle Group</h2>
+		</div>
+	</div>
+	<div id="custom-form" class="row">
+		<div class="col-md-6 col-md-offset-1">
+			<form action="#" method="post">
+				<div class="form-group">
+					<label for="name"><strong>Name:</strong></label>
+				<input type="text" class="form-control" maxlength="100" name="name">
+				<button type="submit" class="btn btn-dark">Create</button>
+				</div>
+			</form>
+		</div>
+	</div>
+{% endblock %}

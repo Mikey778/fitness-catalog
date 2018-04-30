@@ -1,0 +1,13 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+<div id="custom-form">
+    <h2 id="mg-title"> Delete {{item.name}}? </h2>
+    <form style="float:left;margin-right:10px;" action="#" method='post'>
+        <button type="submit" class="btn btn-dark">Delete</button>
+    </form>
+    <a href = '{{url_for('showMuscleGroups')}}'>
+    <button class="btn btn-dark">Cancel</button>
+    </a>
+</div>
+{% endblock %}

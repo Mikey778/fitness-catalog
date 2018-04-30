@@ -1,0 +1,54 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+<div class="col-md-11 col-md-offset-1" style="text-align:center;">
+    <h1 id="mg-title">{{ musclegroup.muscle_group_name }}</h1>
+</div>
+<div class = 'flash'>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+</div>
+<div class="row" style="padding-left:9%;">
+    <div class="col-md-11">
+        <a href="{{url_for('editMuscleGroup', muscle_group_id = musclegroup.id )}}">
+        <button class="btn btn-dark">Edit Muscle Group</button>
+        </a>
+        <a href="{{url_for('newExercise', muscle_group_id = musclegroup.id )}}">
+        <button class="btn btn-dark">Add Exercise</button>
+        </a>
+        <a href="{{url_for('deleteMuscleGroup',muscle_group_id = musclegroup.id )}}">
+        <button class="btn btn-dark">Delete Muscle Group</button>
+        </a>
+    </div>
+</div>
+{% if items !=[] %}
+<div class="row" style="padding-left:9%;">
+    <div class="col-md-11">
+        <h2 id="mg-title">Exercises</h2>
+        {% for i in items %}
+        <div>
+            <h3 id="mg-title">{{i.name}}</h3>
+            <textarea class="textarea-display" disabled rows="3">{{i.instructions}}</textarea>
+            <iframe width="90%" height="315"
+                src="{{i.video_link}}">
+            </iframe>
+            <br>
+            <a href='{{url_for('editExercise', muscle_group_id=musclegroup.id,exercise_id=i.id)}}'>
+            <button class="btn btn-dark">Edit</button>
+            </a>
+            <a href='{{url_for('deleteExercise', muscle_group_id=musclegroup.id,exercise_id=i.id)}}'>
+            <button class="btn btn-dark">Delete</button>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,30 @@
+<!-- Template used from https://getbootstrap.com/docs/4.0/examples/navbars/ -->
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <a class="navbar-brand" href="{{url_for('showMuscleGroups')}}">
+    <img style="filter: grayscale(1) invert(1); " src="/static/glyphicons_free/glyphicons/png/glyphicons-21-home.png" width="30" height="30" class="d-inline-block align-top" alt="">
+    Home
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            {%if 'username' not in session %}
+            <li class="nav-item">
+                <a class="nav-link disabled" href="{{url_for('newMuscleGroup')}}">Add Muscle Group</a>
+            </li>
+        </ul>
+        <div class="nav-item disable justify-content-end">
+            <a class="nav-link" href="{{url_for('showLogin')}}"> Login <span class="sr-only">(current)</span></a>
+        </div>
+        {% else %}
+        <li class="nav-item">
+            <a class="nav-link" href="{{url_for('newMuscleGroup')}}">Add Muscle Group</a>
+        </li>
+        </ul>
+        <div class="nav-item active float-right">
+            <a class="nav-link" href="{{url_for('gdisconnect')}}"> Logout <span class="sr-only">(current)</span></a>
+        </div>
+        {% endif %}
+    </div>
+</nav>

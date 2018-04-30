@@ -1,0 +1,28 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+<div class="col-md-12" style="text-align:center;">
+    <h1 id="mg-title">Muscle Groups</h1>
+</div>
+<hr class="star-light">
+<div class = 'flash'>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+</div>
+<div class="wrapper">
+    {% for group in muscleGroups %}
+    <div id="m-group" class="box text-white bg-dark mb-3 center-new">
+        <p>
+            <a  href = "{{url_for('showExercise', muscle_group_id = group.id)}}">{{group.muscle_group_name}}</a>
+        </p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
