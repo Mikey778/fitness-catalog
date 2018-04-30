@@ -42,9 +42,7 @@ class Exercise(Base):
             'video_link': self.video_link,
         }
 
-engine = create_engine('sqlite:///fitness.db')
+# default
+engine = create_engine('postgresql://pguser:Gr4d3rP4$$!@localhost/fitness');
 
 Base.metadata.create_all(engine)
-
-
-
